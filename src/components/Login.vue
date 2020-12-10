@@ -50,7 +50,27 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login () {
-      this.$refs.loginFormRef.validate((valid) => {})
+      this.$refs.loginFormRef.validate((valid) => {
+        if (this.loginForm.username === '') {
+          this.$message('请输入用户名')
+          return
+        }
+        if (this.loginForm.password === '') {
+          this.$message('请输入密码')
+          return
+        }
+        if (valid) {
+          if (this.loginForm.username === 'admin') {
+            this.$message.success('登录成功')
+            window.sessionStorage.setItem('token', 'hjashdasjdgashkdgahskdhask')
+            this.$router.push('/home')
+          } else {
+            this.$message.error('当前用户不存在')
+          }
+        } else {
+          this.$message.error('登录失败')
+        }
+      })
     }
   }
 }
@@ -58,7 +78,7 @@ export default {
 
 <style lang="less" scoped>
 .login_container {
-  background-color: #2b4b6b;
+  background-color: #545c64;
   height: 100%;
 }
 
