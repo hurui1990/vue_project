@@ -40,7 +40,7 @@
             <el-date-picker
               v-model="value1"
               type="daterange"
-              range-separator="至"
+              range-separator="到"
               start-placeholder="开始日期"
               end-placeholder="结束日期"
               value-format="yyyy/MM/dd">
